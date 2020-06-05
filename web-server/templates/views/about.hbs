@@ -6,12 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/styles.css">
   <title>Weather About Page</title>
+  <link rel="icon" href="/img/weather.png">
 </head>
 
 <body>
-  <h1>{{title}}</h1>
-  <img src="/img/robot.png" alt="avatar">
-  <p>Created by {{name}}</p>
+  <div class="main-content">
+    {{>header}}
+
+    <img class="portrait" src="/img/robot.png" alt="avatar">
+  </div>
+
+  {{>footer}}
 </body>
 
 </html>
