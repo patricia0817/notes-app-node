@@ -17,54 +17,43 @@ MongoClient.connect( connectionURL, { useNewUrlParser: true }, ( error, client )
 
   const db = client.db( databaseName )
 
-  // db.collection( 'users' ).insertOne( {
-  //   name: 'Vikram',
-  //   age: 27
-  // }, ( error, result ) => {
+  // db.collection( 'users' ).findOne( { _id: new ObjectID( '5ee771b4373b9147987e8bcb' ) }, ( error, user ) => {
   //   if ( error ) {
-  //     return console.log( 'Unable to insert user' )
+  //     return console.log( 'Unable to fetch' )
   //   }
 
-  //   console.log( result.ops )
+  //   console.log( user )
   // } )
 
-  // db.collection( 'users' ).insertMany( [
-  //   {
-  //     name: 'Jen',
-  //     age: 28
-  //   },
-  //   {
-  //     name: 'Gunther',
-  //     age: 27
-  //   }
-  // ], ( error, result ) => {
+  // db.collection( 'users' ).find( { age: 27 } ).toArray( ( error, users ) => {
   //   if ( error ) {
-  //     return console.log( 'Unable to insert documents!' )
+  //     return console.log( 'Unable to fetch' )
   //   }
 
-  //   console.log( result.ops )
+  //   console.log( users )
   // } )
 
-  // db.collection( 'tasks' ).insertMany( [
-  //   {
-  //     description: 'Walk the dog',
-  //     completed: true
-  //   },
-  //   {
-  //     description: 'Do your homework',
-  //     completed: false
-  //   },
-  //   {
-  //     description: 'Buy popcorn',
-  //     completed: false
-  //   }
-  // ], ( error, result ) => {
+  // db.collection( 'users' ).find( { age: 27 } ).count( ( error, count ) => {
   //   if ( error ) {
-  //     return console.log( 'Unable to insert documents!' )
+  //     return console.log( 'Unable to fetch' )
   //   }
 
-  //   console.log( result.ops )
+  //   console.log( count )
   // } )
 
+  db.collection( 'tasks' ).findOne( { _id: new ObjectID( '5ee76356c51f2921208fb27e' ) }, ( error, task ) => {
+    if ( error ) {
+      return console.log( "Unable to fetch" )
+    }
 
+    console.log( task )
+  } )
+
+  db.collection( 'tasks' ).find( { completed: false } ).toArray( ( error, tasks ) => {
+    if ( error ) {
+      return console.log( 'Unable to fetch' )
+    }
+
+    console.log( tasks )
+  } )
 } )
