@@ -17,43 +17,22 @@ MongoClient.connect( connectionURL, { useNewUrlParser: true }, ( error, client )
 
   const db = client.db( databaseName )
 
-  // db.collection( 'users' ).findOne( { _id: new ObjectID( '5ee771b4373b9147987e8bcb' ) }, ( error, user ) => {
-  //   if ( error ) {
-  //     return console.log( 'Unable to fetch' )
+  // db.collection( 'users' ).updateOne( {
+  //   _id: new ObjectID( '5ee72604f6961a32e4bfad55' )
+  // }, {
+  //   $inc: {
+  //     age: 1
   //   }
-
-  //   console.log( user )
+  // } ).then( ( result ) => {
+  //   console.log( result )
+  // } ).catch( ( error ) => {
+  //   console.log( error )
   // } )
-
-  // db.collection( 'users' ).find( { age: 27 } ).toArray( ( error, users ) => {
-  //   if ( error ) {
-  //     return console.log( 'Unable to fetch' )
-  //   }
-
-  //   console.log( users )
-  // } )
-
-  // db.collection( 'users' ).find( { age: 27 } ).count( ( error, count ) => {
-  //   if ( error ) {
-  //     return console.log( 'Unable to fetch' )
-  //   }
-
-  //   console.log( count )
-  // } )
-
-  db.collection( 'tasks' ).findOne( { _id: new ObjectID( '5ee76356c51f2921208fb27e' ) }, ( error, task ) => {
-    if ( error ) {
-      return console.log( "Unable to fetch" )
+  db.collection( 'tasks' ).updateMany( {
+    completed: false
+  }, {
+    $set: {
+      completed: true
     }
-
-    console.log( task )
-  } )
-
-  db.collection( 'tasks' ).find( { completed: false } ).toArray( ( error, tasks ) => {
-    if ( error ) {
-      return console.log( 'Unable to fetch' )
-    }
-
-    console.log( tasks )
-  } )
+  } ).then( ( result ) => console.log( result ) ).catch( ( error ) => console.log( error ) )
 } )
